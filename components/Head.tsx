@@ -36,7 +36,6 @@ export function Head({title}: HeadProps) {
 	<meta name="twitter:description" content={env.DESCRIPTION}/>
 	<meta name="twitter:image:src" content={imagePath}/>
 	<meta name="description" content={env.DESCRIPTION}/>
-	<script type="text/javascript" src="/js/lazy-loading.js"/>
 	<link rel="stylesheet" type="text/css" media="screen" href="/css/master.css" />
   {env.ALLOW_IMAGE_SHARING && <link rel="stylesheet" type="text/css" href="/css/toastify.min.css"/>}
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1"/>
