@@ -4,7 +4,9 @@ import { setToken } from "../api/util/settings.ts";
 
 import "$std/dotenv/load.ts";
 
-const api_token = Deno.env.get("API_TOKEN");
+import { env } from "./env.ts";
+
+const api_token = env.API_TOKEN;
 
 if (!api_token) {
   console.error("Please provide an API_TOKEN environment variable");

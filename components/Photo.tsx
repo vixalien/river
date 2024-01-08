@@ -3,6 +3,7 @@ import ColorHash from "color-hash";
 import { basename } from "$std/path/basename.ts";
 
 import { ImageMedium } from "vsco-api";
+import { env } from "../util/env.ts";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -21,8 +22,6 @@ interface PaginationButtonProps {
 }
 
 export function Photo({ matches, image, previous, next }: ImageProps) {
-  const env = Deno.env.toObject();
-
   // check slug
   const slug = image._id;
   const id = `id-${slug}`;
@@ -81,7 +80,8 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
         label="Next"
       />
       <ul className="links top photodetail-links">
-        {/* <li className="caption">
+        {
+          /* <li className="caption">
           <span className="caption-text">{image.description}</span>
         </li>
         <li className="date">
@@ -90,7 +90,8 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
               {capture_date.toLocaleDateString("en-IE")}
             </time>
           </code>
-        </li> */}
+        </li> */
+        }
         {env.ALLOW_IMAGE_SHARING == "1" && (
           <li class="share">
             <a

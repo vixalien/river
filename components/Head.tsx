@@ -1,6 +1,8 @@
 // deno-fmt-ignore-file
 // Keep the file data nicely aligned
 
+import { env } from "../util/env.ts";
+
 // This component is only server-side rendered
 
 interface HeadProps {
@@ -8,12 +10,10 @@ interface HeadProps {
 }
 
 function absoluteUrl(path: string) {
-  return new URL(path, Deno.env.get("URL")!).toString()
+  return new URL(path, env.URL!).toString()
 }
 
 export function Head({title}: HeadProps) {
-  const env = Deno.env.toObject();
-
   const imagePath = absoluteUrl("hello")
 
   return <>
