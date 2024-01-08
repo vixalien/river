@@ -1,7 +1,5 @@
 import { getProfileMedia, ImageMedium, setToken } from "vsco-api";
 
-console.log("env")
-
 setToken(Deno.env.get("API_TOKEN")!);
 
 export async function getAllMedia() {
