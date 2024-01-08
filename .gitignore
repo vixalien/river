@@ -10,4 +10,5 @@ _fresh/
 # npm dependencies
 node_modules/
 
-!.env
+# site configuration
+!.env.config
