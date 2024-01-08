@@ -7,3 +7,4 @@
 - find a way to cache api responses (maybe using kv, or localStorage)
 - remove unnecessary config options
 - prefix configuration with `RIVER_` to avoid leaking other env
+- use `.env.example` and `.env.defaults` correctly
