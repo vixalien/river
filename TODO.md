@@ -8,3 +8,4 @@
 - remove unnecessary config options
 - prefix configuration with `RIVER_` to avoid leaking other env
 - use `.env.example` and `.env.defaults` correctly
+- use responsive images
