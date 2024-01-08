@@ -2,7 +2,7 @@ export interface BaseMedium {
   type: string;
 }
 
-export interface Image extends BaseMedium {
+export interface ImageMedium extends BaseMedium {
   type: string;
   image: {
     _id: string;
@@ -65,7 +65,7 @@ export interface CameraImageMeta {
 /** CameraImageMeta is not always available */
 export type ImageMeta = CameraImageMeta & Partial<BaseMediaMeta>;
 
-export type Medium = Image;
+export type Medium = ImageMedium;
 
 export interface ProfileMedia {
   media: Medium[];
