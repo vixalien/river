@@ -1,8 +1,17 @@
 import { getProfileMedia, ImageMedium, setToken } from "vsco-api";
+import { join } from "$std/path/mod.ts";
 
 setToken(Deno.env.get("API_TOKEN")!);
 
+const CACHE_FILE = join(Deno.cwd(), "cache", "media.json");
+
 export async function getAllMedia() {
+  if (Deno.env.get("NODE_ENV") === "development" && await cacheExists()) {
+    const json = await Deno.readTextFile(CACHE_FILE);
+
+    return JSON.parse(json) as ImageMedium[];
+  }
+
   const id = Number(Deno.env.get("USER_ID"));
 
   if (!id || Number.isNaN(id)) {
@@ -22,5 +31,18 @@ export async function getAllMedia() {
     cursor = next_cursor;
   } while (cursor);
 
+  // TODO: allow writing to cache
+  // TODO2: allow using cache in production
+  // Deno.writeTextFileSync("./media.json", JSON.stringify(media, null, 2));
+
   return media;
+}
+
+async function cacheExists() {
+  try {
+    await Deno.stat(CACHE_FILE);
+    return true;
+  } catch {
+    return false;
+  }
 }
