@@ -5,9 +5,12 @@ import { Photos } from "../components/Photos.tsx";
 import { getAllMedia } from "../util/get-media.ts";
 
 export default function Grid({ url, data }: PageProps<GridData>) {
+  const media = data.media
+    .sort((a, b) => b.image.capture_date_ms - a.image.capture_date_ms);
+
   return (
     <main>
-      <Photos images={data.media} url={url} />
+      <Photos images={media} url={url} />
     </main>
   );
 }
