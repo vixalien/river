@@ -1,14 +1,15 @@
 import { Handlers } from "$fresh/server.ts";
 
-import images from "../images.json" assert { type: "json" };
-import Grid from "./index.tsx";
+import { getAllMedia } from "../util/get-media.ts";
+import Grid, { GridData } from "./index.tsx";
 
-export const handler: Handlers = {
-  GET(req, ctx) {
+export const handler: Handlers<GridData> = {
+  async GET(req, ctx) {
     const url = new URL(req.url);
+    const media = await getAllMedia();
 
-    if (images.media.some((image) => `/${image.image._id}` === url.pathname)) {
-      return ctx.render({ url });
+    if (media.some((image) => `/${image.image._id}` === url.pathname)) {
+      return ctx.render({ media });
     }
 
     return ctx.renderNotFound();

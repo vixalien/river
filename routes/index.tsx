@@ -1,13 +1,25 @@
-import { PageProps } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { ImageMedium } from "vsco-api";
 
 import { Photos } from "../components/Photos.tsx";
-import images from "../images.json" assert { type: "json" };
+import { getAllMedia } from "../util/get-media.ts";
 
-export default function Grid({ url }: PageProps) {
+export default function Grid({ url, data }: PageProps<GridData>) {
   return (
     <main>
-      <Photos images={images.media as ImageMedium[]} url={url} />
+      <Photos images={data.media} url={url} />
     </main>
   );
 }
+
+export interface GridData {
+  media: ImageMedium[];
+}
+
+export const handler: Handlers<GridData> = {
+  async GET(_req, ctx) {
+    const media = await getAllMedia();
+
+    return ctx.render({ media });
+  },
+};
