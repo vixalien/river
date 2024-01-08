@@ -9,3 +9,4 @@
 - prefix configuration with `RIVER_` to avoid leaking other env
 - use `.env.example` and `.env.defaults` correctly
 - use responsive images
+- show date, location and caption on images if available
