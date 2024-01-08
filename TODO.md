@@ -1,0 +1,9 @@
+- use islands and handlers instead of raw javascript
+- investigating using flexbox carousels
+- show icons like github, twitter etc...
+- more complete code
+- etags
+- api return json and headers
+- find a way to cache api responses (maybe using kv, or localStorage)
+- remove unnecessary config options
+- prefix configuration with `RIVER_` to avoid leaking other env
