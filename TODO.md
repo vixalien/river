@@ -1,7 +1,6 @@
 - use islands and handlers instead of raw javascript
 - investigating using flexbox carousels
 - show icons like github, twitter etc...
-- more complete code
 - etags
 - api return json and headers
 - find a way to cache api responses (maybe using kv, or localStorage)
@@ -10,3 +9,5 @@
 - use `.env.example` and `.env.defaults` correctly
 - use responsive images
 - show date, location and caption on images if available
+- add favicons & change meta tags
+- show a toast after copying the link to clipboard
