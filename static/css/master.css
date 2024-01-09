@@ -425,10 +425,10 @@ main {
   .grid {
     flex-direction: row;
   }
-  .grid .item {
+  /* .grid .item {
     height: auto;
     width: 100%;
-  }
+  } */
   .grid .item img {
     width: 100%;
     height: auto;
