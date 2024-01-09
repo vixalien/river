@@ -3,7 +3,7 @@ import ColorHash from "color-hash";
 import { basename } from "$std/path/basename.ts";
 
 import { ImageMedium } from "vsco-api";
-import { env } from "../util/env.ts";
+import { absoluteUrl, env } from "../util/env.ts";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -95,7 +95,9 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
         {env.ALLOW_IMAGE_SHARING == "1" && (
           <li class="share">
             <a
-              onclick={`shareImage('{{ image.basename }}','{{ slug | relative_url }}');`}
+              onclick={`shareImage('${image.description}','${
+                absoluteUrl(slug)
+              }');`}
               title="Share this photo"
             >
               Share
@@ -120,7 +122,9 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
         {env.ALLOW_IMAGE_SHARING == "1" && (
           <li class="share">
             <a
-              onclick={`shareImage('{{ image.basename }}','{{ slug | relative_url }}');`}
+              onclick={`shareImage('${image.description}','${
+                absoluteUrl(slug)
+              }');`}
               className="gridview-button share"
               title="Share this photo"
             >

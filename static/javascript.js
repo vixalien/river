@@ -13,7 +13,7 @@ const TARGET_CLASS = "target";
 document.addEventListener("touchstart", handleTouchStart, false);
 document.addEventListener("touchmove", handleTouchMove, false);
 
-var xDown = null;
+let xDown = null;
 
 function getTouches(evt) {
   return evt.touches || // browser API
@@ -30,9 +30,9 @@ function handleTouchMove(evt) {
     return;
   }
 
-  var xUp = evt.touches[0].clientX;
+  const xUp = evt.touches[0].clientX;
 
-  var xDiff = xDown - xUp;
+  const xDiff = xDown - xUp;
 
   if (xDiff > 0) {
     clickNavigationButton(".next");
@@ -46,19 +46,16 @@ function handleTouchMove(evt) {
 
 /* image sharing */
 
+// deno-lint-ignore no-unused-vars
 const shareImage = (title, url) => {
   if (navigator.canShare) {
     const shareData = {
       title: title,
-      text:
-        "I found a cool photo over at {{ site.env.TITLE | smartify }}! Check it out!",
       url: url,
     };
     navigator.share(shareData);
   } else {
-    navigator.clipboard.writeText(
-      `I found a cool photo over at {{ site.env.TITLE | smartify }}! Check it out!\n\n${window.location.origin}${url}`,
-    );
+    navigator.clipboard.writeText(url);
     Toastify({
       text: "Copied to clipboard",
       duration: 3000,
@@ -99,7 +96,7 @@ const closePhoto = (href) => {
 };
 
 const removeTargetClass = () => {
-  let targets = document.querySelectorAll(`.${TARGET_CLASS}`);
+  const targets = document.querySelectorAll(`.${TARGET_CLASS}`);
   targets.forEach((target) => {
     target.classList.remove(TARGET_CLASS);
   });
