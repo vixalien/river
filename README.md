@@ -1,28 +1,33 @@
 # river
 
-A simple photo stream web app that fetches photos from [VSCO]. Hugely inspired
+A simple photostream web app that fetches photos from [VSCO]. Hugely inspired
 and based on [photo-stream].
 
 ### Setup
 
-Before setting up the project, you'll need to create a `.env` file in the root
+First make sure to Deno is installed:
+https://deno.land/manual/getting_started/installation
+
+Before running the project, you'll need to create a `.env` file in the root
 directory. This file should contain the configuration for the project. The
-default options are set in `.env.defaults` and you should overwrite options as
-necessary.
+default options are set in `.env.defaults` and you should check that file to see
+all available configuration options.
 
 ```ini
 TITLE=My photo stream
+DESCRIPTION=A collection of my photos
+# ...
 
-# these options are *required* and should probably be kept secret
-API_TOKEN=a-vsco-api-token
+# the user_id is the only required option
 USER_ID=your-vsco-user-id
 ```
 
-Using a user ID helps to avoid resolving the user ID from the username every
-time.
+#### Getting your VSCO user ID
 
-To get your VSCO user ID, you can run the following command **after** you've set
-your API token:
+Using a user ID helps to avoid resolving the user ID from the username on each
+request.
+
+To get your numberic VSCO user ID, you can run the following command:
 
 ```sh
 deno task get-id your-username
@@ -30,15 +35,13 @@ deno task get-id your-username
 
 ### Usage
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+To run the project, you can use the following command:
 
-Then start the project:
-
-```
+```sh
 deno task start
 ```
 
-This will watch the project directory and restart as necessary.
+This will watch the project directory and restart as you make changes.
 
 ### Contributing
 
