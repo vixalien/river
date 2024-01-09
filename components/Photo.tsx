@@ -149,7 +149,7 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
   );
 }
 
-function imageLink(image: ImageMedium["image"], width: number) {
+export function imageLink(image: ImageMedium["image"], width: number) {
   const url = new URL("https://" + image.responsive_url);
   url.searchParams.set("w", width.toString());
 
