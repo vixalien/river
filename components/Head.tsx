@@ -1,19 +1,9 @@
 // deno-fmt-ignore-file
 // Keep the file data nicely aligned
 
-import { env } from "../util/env.ts";
+import { absoluteUrl, env } from "../util/env.ts";
 
-// This component is only server-side rendered
-
-interface HeadProps {
-  title?: string
-}
-
-function absoluteUrl(path: string) {
-  return new URL(path, env.URL!).toString()
-}
-
-export function Head({title}: HeadProps) {
+export function Head() {
   const imagePath = absoluteUrl("hello")
 
   return <>
@@ -21,9 +11,9 @@ export function Head({title}: HeadProps) {
 		<meta name="google" content="notranslate" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 		{env.ALLOW_INDEXING == "0" && <meta name="robots" content="noindex" />}
-		<title data-title={env.TITLE}>{title || env.TITLE}</title>
+		<title data-title={env.TITLE}>{env.TITLE}</title>
 		<link rel="alternate" type="application/rss+xml" title="RSS Feed" href={absoluteUrl("feed.xml")}/>
-		<meta property="og:title" content="{{ page.title | default: site.env.TITLE }}"/>
+		<meta property="og:title" content={env.TITLE}/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:url" content={env.URL}/>
 		<meta property="og:image" content={imagePath}/>
@@ -32,7 +22,7 @@ export function Head({title}: HeadProps) {
 		<meta name="thumbnail" content={imagePath}/>
 		<meta name="twitter:card" content="summary_large_image"/>
 		<meta name="twitter:site" content={env.TWITTER_USERNAME}/>
-		<meta name="twitter:title" content="{{ page.title | default: site.env.TITLE }}"/>
+		<meta name="twitter:title" content={env.TITLE}/>
 		<meta name="twitter:description" content={env.DESCRIPTION}/>
 		<meta name="twitter:image:src" content={imagePath}/>
 		<meta name="description" content={env.DESCRIPTION}/>

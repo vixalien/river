@@ -5,3 +5,7 @@ if (!("Deno" in window)) {
 }
 
 export const env = Deno.env.toObject();
+
+export function absoluteUrl(path: string) {
+  return new URL(path, env.URL!).toString();
+}
