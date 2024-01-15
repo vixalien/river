@@ -3,7 +3,6 @@
 - etags
 - api return json and headers
 - find a way to cache api responses (maybe using kv, or localStorage)
-- prefix configuration with `RIVER_` to avoid leaking other env
 - use responsive images
 - show date, location and caption on images if available
 - add favicons & change meta tags
