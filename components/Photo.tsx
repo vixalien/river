@@ -8,6 +8,7 @@ import { useEnv } from "../islands/EnvContext.tsx";
 import ShareButton from "../islands/ShareButton.tsx";
 import OpenButton from "../islands/OpenButton.tsx";
 import PaginationButton from "../islands/PaginationButton.tsx";
+import CloseButton from "../islands/CloseButton.tsx";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -51,7 +52,7 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
         />
       </span>,
       <OpenButton id={id} href={slug} />
-      <a className="close" href="/">Open</a>
+      <CloseButton />
       <PaginationButton
         className="previous"
         slug={previous}

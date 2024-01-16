@@ -6,6 +6,7 @@ import * as $_id_ from "./routes/[id].tsx";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $CloseButton from "./islands/CloseButton.tsx";
 import * as $EnvContext from "./islands/EnvContext.tsx";
 import * as $OpenButton from "./islands/OpenButton.tsx";
 import * as $PaginationButton from "./islands/PaginationButton.tsx";
@@ -20,6 +21,7 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/CloseButton.tsx": $CloseButton,
     "./islands/EnvContext.tsx": $EnvContext,
     "./islands/OpenButton.tsx": $OpenButton,
     "./islands/PaginationButton.tsx": $PaginationButton,
