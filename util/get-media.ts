@@ -1,19 +1,19 @@
 import { getProfileMedia, ImageMedium, setToken } from "vsco-api";
 import { join } from "$std/path/mod.ts";
-import { env } from "./env.ts";
+import { __env } from "./env.ts";
 
-setToken(env.API_TOKEN);
+setToken(__env.API_TOKEN);
 
 const CACHE_FILE = join(Deno.cwd(), "cache", "media.json");
 
 export async function getAllMedia() {
-  if (env.NODE_ENV === "development" && await cacheExists()) {
+  if (__env.NODE_ENV === "development" && await cacheExists()) {
     const json = await Deno.readTextFile(CACHE_FILE);
 
     return JSON.parse(json) as ImageMedium[];
   }
 
-  const id = Number(env.USER_ID);
+  const id = Number(__env.USER_ID);
 
   if (!id || Number.isNaN(id)) {
     throw new Error("Please provide a numeric USER_ID environment variable");

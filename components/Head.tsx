@@ -2,20 +2,23 @@
 // Keep the file data nicely aligned
 
 import { Head as FreshHead } from "$fresh/runtime.ts";
-import { absoluteUrl, env } from "../util/env.ts";
+import { absoluteUrl } from "../util/url.ts";
+import { useEnv } from "./EnvContext.tsx";
 
 export interface HeadProps {
 	thumbnail: string
 }
 
 export function Head({ thumbnail }: HeadProps) {
+	const env = useEnv();
+
   return <FreshHead>
   	<meta charset="utf-8"/>
 		<meta name="google" content="notranslate" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 		{env.ALLOW_INDEXING == "0" && <meta name="robots" content="noindex" />}
 		<title data-title={env.TITLE}>{env.TITLE}</title>
-		<link rel="alternate" type="application/rss+xml" title="RSS Feed" href={absoluteUrl("feed.xml")}/>
+		<link rel="alternate" type="application/rss+xml" title="RSS Feed" href={absoluteUrl("feed.xml", env.URL)}/>
 		<meta property="og:title" content={env.TITLE}/>
 		<meta property="og:type" content="website"/>
 		<meta property="og:url" content={env.URL}/>

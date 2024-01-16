@@ -3,12 +3,21 @@ import { ImageMedium } from "vsco-api";
 
 import { Photos } from "../components/Photos.tsx";
 import { getAllMedia } from "../util/get-media.ts";
-import { env } from "../util/env.ts";
+import { __env } from "../util/env.ts";
 import { Head } from "../components/Head.tsx";
-import { imageLink } from "../components/Photo.tsx";
+import { EnvProvider, useEnv } from "../components/EnvContext.tsx";
 
-export default function Grid({ url, data }: PageProps<GridData>) {
-  let media = data.media
+import { imageLink } from "../islands/Photo.tsx";
+
+interface GridProps {
+  media: ImageMedium[];
+  url: URL;
+}
+
+function Grid({ url, media: passedMedia }: GridProps) {
+  const env = useEnv();
+
+  let media = passedMedia
     .sort((a, b) => b.image.capture_date_ms - a.image.capture_date_ms);
 
   if (env.DEFAULT_REVERSE_SORT == "1") {
@@ -88,15 +97,24 @@ export default function Grid({ url, data }: PageProps<GridData>) {
   );
 }
 
+export default function GridWithEnv({ data, url }: PageProps<GridData>) {
+  return (
+    <EnvProvider value={data.env}>
+      <Grid url={url} media={data.media} />
+    </EnvProvider>
+  );
+}
+
 export interface GridData {
   media: ImageMedium[];
+  env: Record<string, string>;
 }
 
 export const handler: Handlers<GridData> = {
   async GET(_req, ctx) {
     const media = await getAllMedia();
 
-    return ctx.render({ media });
+    return ctx.render({ media, env: __env });
   },
 };
 

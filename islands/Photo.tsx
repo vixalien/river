@@ -1,9 +1,10 @@
-import cn from "https://esm.sh/classnames@2.5.1";
+import cn from "classnames";
 import ColorHash from "color-hash";
 import { basename } from "$std/path/basename.ts";
 
 import { ImageMedium } from "vsco-api";
-import { absoluteUrl, env } from "../util/env.ts";
+import { useEnv } from "../components/EnvContext.tsx";
+import { absoluteUrl } from "../util/url.ts";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -21,7 +22,7 @@ interface PaginationButtonProps {
   label: string;
 }
 
-export function Photo({ matches, image, previous, next }: ImageProps) {
+export default function Photo({ matches, image, previous, next }: ImageProps) {
   // check slug
   const slug = image._id;
   const id = `id-${slug}`;
@@ -29,6 +30,8 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
   const capture_date = new Date(image.capture_date_ms);
 
   const tint = colorHash.hex(slug);
+
+  const env = useEnv();
 
   function PaginationButton(
     { className, slug, title, label }: PaginationButtonProps,
@@ -96,7 +99,7 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
           <li class="share">
             <a
               onclick={`shareImage('${image.description}','${
-                absoluteUrl(slug)
+                absoluteUrl(slug, env.URL)
               }');`}
               title="Share this photo"
             >
@@ -123,7 +126,7 @@ export function Photo({ matches, image, previous, next }: ImageProps) {
           <li class="share">
             <a
               onclick={`shareImage('${image.description}','${
-                absoluteUrl(slug)
+                absoluteUrl(slug, env.URL)
               }');`}
               className="gridview-button share"
               title="Share this photo"
@@ -158,4 +161,25 @@ export function imageLink(image: ImageMedium["image"], width: number) {
 
 function imageName(image: ImageMedium["image"]) {
   return basename(image.responsive_url);
+}
+
+function shareImage(title: string, url: string) {
+  if (navigator.canShare?.()) {
+    const shareData = {
+      title: title,
+      url: url,
+    };
+    navigator.share(shareData);
+  } else {
+    navigator.clipboard.writeText(url);
+
+    // @ts-expect-error Toastify will be imported later
+    Toastify({
+      text: "Copied to clipboard",
+      duration: 3000,
+      style: {
+        background: "rgba(0, 0, 0, 0.7)",
+      },
+    }).showToast();
+  }
 }

@@ -4,9 +4,9 @@ import { setToken } from "../api/util/settings.ts";
 
 import "$std/dotenv/load.ts";
 
-import { env } from "./env.ts";
+import { __env } from "./env.ts";
 
-const api_token = env.API_TOKEN;
+const api_token = __env.API_TOKEN;
 
 if (!api_token) {
   console.error("Please provide an API_TOKEN environment variable");

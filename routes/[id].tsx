@@ -1,4 +1,5 @@
 import { Handlers } from "$fresh/server.ts";
+import { __env } from "../util/env.ts";
 
 import { getAllMedia } from "../util/get-media.ts";
 import Grid, { GridData } from "./index.tsx";
@@ -20,7 +21,7 @@ export const handler: Handlers<GridData> = {
       const media = await getAllMedia();
 
       if (media.some((image) => image.image._id === id)) {
-        return ctx.render({ media });
+        return ctx.render({ media, env: __env });
       }
     }
 

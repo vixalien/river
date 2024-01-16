@@ -1,5 +1,5 @@
 import { ImageMedium } from "vsco-api";
-import { Photo } from "./Photo.tsx";
+import Photo from "../islands/Photo.tsx";
 
 interface PhotosProps {
   images: ImageMedium[];
