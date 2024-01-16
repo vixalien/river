@@ -55,8 +55,6 @@ const clickNavigationButton = (buttonClass) => {
   }
 };
 
-
-
 const handleClick = (selector, event, callback) => {
   if (event.target.matches(selector)) {
     callback();
@@ -112,17 +110,6 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  handleClick("[data-target][href]", event, () => {
-    const id = event.target.getAttribute("data-target");
-    const href = event.target.getAttribute("href");
-    openPhoto(id, href);
-  });
-
-  handleClick("[href].close", event, () => {
-    const href = event.target.getAttribute("href");
-    closePhoto(href);
-  });
-
   handleClick("ul.links li.sort a", event, () => {
     reverseSorting();
   });
