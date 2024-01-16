@@ -55,28 +55,12 @@ const clickNavigationButton = (buttonClass) => {
   }
 };
 
-const handleClick = (selector, event, callback) => {
-  if (event.target.matches(selector)) {
-    callback();
-    event.preventDefault();
-  }
-};
-
 const handleKey = (keyCode, event, callback) => {
   if (event.keyCode === keyCode) {
     callback();
     event.preventDefault();
   }
 };
-
-// const reverseSorting = () => {
-//   {% if site.env.ALLOW_ORDER_SORT_CHANGE == "1" %}
-//   var parent = document.getElementById('target');
-//   for (var i = 1; i < parent.childNodes.length; i++){
-//       parent.insertBefore(parent.childNodes[i], parent.firstChild);
-//   }
-//   {% endif %}
-// }
 
 window.onpopstate = function (event) {
   if (event.state && event.state.id) {
@@ -98,19 +82,5 @@ document.addEventListener("keydown", (event) => {
 
   handleKey(LEFT, event, () => {
     clickNavigationButton(".previous");
-  });
-
-  handleKey(UP, event, () => {
-    reverseSorting();
-  });
-
-  handleKey(DOWN, event, () => {
-    reverseSorting();
-  });
-});
-
-document.addEventListener("click", (event) => {
-  handleClick("ul.links li.sort a", event, () => {
-    reverseSorting();
   });
 });
