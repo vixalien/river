@@ -5,9 +5,9 @@ import { Photos } from "../components/Photos.tsx";
 import { getAllMedia } from "../util/get-media.ts";
 import { __env } from "../util/env.ts";
 import { Head } from "../components/Head.tsx";
-import { EnvProvider, useEnv } from "../components/EnvContext.tsx";
+import { EnvProvider, useEnv } from "../islands/EnvContext.tsx";
 
-import { imageLink } from "../islands/Photo.tsx";
+import { imageLink } from "../components/Photo.tsx";
 
 interface GridProps {
   media: ImageMedium[];

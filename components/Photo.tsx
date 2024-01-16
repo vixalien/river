@@ -3,8 +3,9 @@ import ColorHash from "color-hash";
 import { basename } from "$std/path/basename.ts";
 
 import { ImageMedium } from "vsco-api";
-import { useEnv } from "../components/EnvContext.tsx";
-import { absoluteUrl } from "../util/url.ts";
+
+import { useEnv } from "../islands/EnvContext.tsx";
+import ShareButton from "../islands/ShareButton.tsx";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -96,16 +97,10 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
         </li> */
         }
         {env.ALLOW_IMAGE_SHARING == "1" && (
-          <li class="share">
-            <a
-              onclick={`shareImage('${image.description}','${
-                absoluteUrl(slug, env.URL)
-              }');`}
-              title="Share this photo"
-            >
-              Share
-            </a>
-          </li>
+          <ShareButton
+            text={image.description}
+            slug={slug}
+          />
         )}
         {env.ALLOW_ORIGINAL_DOWNLOAD == "1" && (
           <li class="download">
@@ -123,17 +118,11 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
 
       <ul className="meta">
         {env.ALLOW_IMAGE_SHARING == "1" && (
-          <li class="share">
-            <a
-              onclick={`shareImage('${image.description}','${
-                absoluteUrl(slug, env.URL)
-              }');`}
-              className="gridview-button share"
-              title="Share this photo"
-            >
-              Share
-            </a>
-          </li>
+          <ShareButton
+            text={image.description}
+            slug={slug}
+            className="gridview-button share"
+          />
         )}
         {env.ALLOW_ORIGINAL_DOWNLOAD == "1" && (
           <li class="download">
@@ -161,25 +150,4 @@ export function imageLink(image: ImageMedium["image"], width: number) {
 
 function imageName(image: ImageMedium["image"]) {
   return basename(image.responsive_url);
-}
-
-function shareImage(title: string, url: string) {
-  if (navigator.canShare?.()) {
-    const shareData = {
-      title: title,
-      url: url,
-    };
-    navigator.share(shareData);
-  } else {
-    navigator.clipboard.writeText(url);
-
-    // @ts-expect-error Toastify will be imported later
-    Toastify({
-      text: "Copied to clipboard",
-      duration: 3000,
-      style: {
-        background: "rgba(0, 0, 0, 0.7)",
-      },
-    }).showToast();
-  }
 }

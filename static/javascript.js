@@ -46,26 +46,6 @@ function handleTouchMove(evt) {
 
 /* image sharing */
 
-// deno-lint-ignore no-unused-vars
-const shareImage = (title, url) => {
-  if (navigator.canShare) {
-    const shareData = {
-      title: title,
-      url: url,
-    };
-    navigator.share(shareData);
-  } else {
-    navigator.clipboard.writeText(url);
-    Toastify({
-      text: "Copied to clipboard",
-      duration: 3000,
-      style: {
-        background: "rgba(0, 0, 0, 0.7)",
-      },
-    }).showToast();
-  }
-};
-
 const clickNavigationButton = (buttonClass) => {
   const id = window.history.state && window.history.state.id;
   if (id) {

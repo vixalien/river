@@ -3,7 +3,7 @@
 
 import { Head as FreshHead } from "$fresh/runtime.ts";
 import { absoluteUrl } from "../util/url.ts";
-import { useEnv } from "./EnvContext.tsx";
+import { useEnv } from "../islands/EnvContext.tsx";
 
 export interface HeadProps {
 	thumbnail: string
