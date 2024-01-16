@@ -55,32 +55,7 @@ const clickNavigationButton = (buttonClass) => {
   }
 };
 
-const openPhoto = (id, href) => {
-  const photo = document.getElementById(id);
-  const phototitle = photo.getAttribute("title");
-  removeTargetClass();
-  photo.classList.add(TARGET_CLASS);
-  document.title = phototitle;
-  if (href) {
-    window.history.pushState({ id: id }, "", href);
-  }
-};
 
-const closePhoto = (href) => {
-  const title = document.querySelector("head title").getAttribute("data-title");
-  removeTargetClass();
-  document.title = title;
-  if (href) {
-    window.history.pushState({}, "", href);
-  }
-};
-
-const removeTargetClass = () => {
-  const targets = document.querySelectorAll(`.${TARGET_CLASS}`);
-  targets.forEach((target) => {
-    target.classList.remove(TARGET_CLASS);
-  });
-};
 
 const handleClick = (selector, event, callback) => {
   if (event.target.matches(selector)) {

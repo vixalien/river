@@ -6,6 +6,7 @@ import { ImageMedium } from "vsco-api";
 
 import { useEnv } from "../islands/EnvContext.tsx";
 import ShareButton from "../islands/ShareButton.tsx";
+import OpenButton from "../islands/OpenButton.tsx";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -68,8 +69,8 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
             backgroundImage: `url(${imageLink(image, 1280)})`,
           }}
         />
-      </span>
-      <a className="open" href={slug} data-target={id}>Open</a>
+      </span>,
+      <OpenButton id={id} href={slug} />
       <a className="close" href="/">Open</a>
       <PaginationButton
         className="previous"
