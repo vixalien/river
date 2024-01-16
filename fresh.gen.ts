@@ -8,6 +8,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $EnvContext from "./islands/EnvContext.tsx";
 import * as $OpenButton from "./islands/OpenButton.tsx";
+import * as $PaginationButton from "./islands/PaginationButton.tsx";
 import * as $ShareButton from "./islands/ShareButton.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -21,6 +22,7 @@ const manifest = {
   islands: {
     "./islands/EnvContext.tsx": $EnvContext,
     "./islands/OpenButton.tsx": $OpenButton,
+    "./islands/PaginationButton.tsx": $PaginationButton,
     "./islands/ShareButton.tsx": $ShareButton,
   },
   baseUrl: import.meta.url,

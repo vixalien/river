@@ -11,5 +11,5 @@ export default function OpenButton({ id, href }: OpenButtonProps) {
     openPhoto(id, href);
   }
 
-  return <a className="open" onClick={handleClick}>Open</a>;
+  return <a className="open" onClick={handleClick} href={href}>Open</a>;
 }

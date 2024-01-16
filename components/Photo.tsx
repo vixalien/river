@@ -7,6 +7,7 @@ import { ImageMedium } from "vsco-api";
 import { useEnv } from "../islands/EnvContext.tsx";
 import ShareButton from "../islands/ShareButton.tsx";
 import OpenButton from "../islands/OpenButton.tsx";
+import PaginationButton from "../islands/PaginationButton.tsx";
 
 export interface ImageProps {
   image: ImageMedium["image"];
@@ -16,13 +17,6 @@ export interface ImageProps {
 }
 
 const colorHash = new ColorHash();
-
-interface PaginationButtonProps {
-  className: string;
-  title: string;
-  slug?: string;
-  label: string;
-}
 
 export default function Photo({ matches, image, previous, next }: ImageProps) {
   // check slug
@@ -34,20 +28,6 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
   const tint = colorHash.hex(slug);
 
   const env = useEnv();
-
-  function PaginationButton(
-    { className, slug, title, label }: PaginationButtonProps,
-  ) {
-    if (!slug) return null;
-
-    const id = `id-${slug}`;
-
-    return (
-      <a href={slug} className={className} data-target={id} title={title}>
-        <span>{label}</span>
-      </a>
-    );
-  }
 
   return (
     <li
