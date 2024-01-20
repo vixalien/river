@@ -5,6 +5,8 @@ and based on [photo-stream].
 
 ![A demo of river on memories.vixalien.com](./.github/screenshots/preview.png)
 
+> Note: All images are courtesy of [70s80s90s on VSCO][copyright]
+
 ## Demo
 
 To run a pre-configured demo of river, you can use the following command:
@@ -68,3 +70,4 @@ For some ideas on what to work on, check out the [TODO] file.
 [licence]: ./LICENCE
 [todo]: ./TODO
 [demo]: ./demo
+[copyright]: https://vsco.co/70s80s90s/gallery
