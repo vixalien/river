@@ -48,6 +48,9 @@ This will watch the project directory and restart as you make changes.
 river is available under the MIT license. See the [LICENCE] file for more info.
 Pull requests are welcome! If you have a feature request, please open an issue.
 
+For some ideas on what to work on, check out the [TODO] file.
+
 [vsco]: https://vsco.co
 [photo-stream]: https://github.com/waschinski/photo-stream
 [licence]: ./LICENCE
+[todo]: ./TODO
