@@ -3,6 +3,18 @@
 A simple photostream web app that fetches photos from [VSCO]. Hugely inspired
 and based on [photo-stream].
 
+![A demo of river on memories.vixalien.com](./.github/screenshots/preview.png)
+
+## Demo
+
+To run a pre-configured demo of river, you can use the following command:
+
+```sh
+deno task demo
+```
+
+You can check the [demo] folder for more info.
+
 ### Setup
 
 First, make sure Deno is installed:
@@ -55,3 +67,4 @@ For some ideas on what to work on, check out the [TODO] file.
 [photo-stream]: https://github.com/waschinski/photo-stream
 [licence]: ./LICENCE
 [todo]: ./TODO
+[demo]: ./demo

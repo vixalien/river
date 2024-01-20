@@ -8,7 +8,8 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "get-id": "deno run -A util/get-id.ts"
+    "get-id": "deno run -A util/get-id.ts",
+    "demo": "deno run -A demo/start.ts"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],
