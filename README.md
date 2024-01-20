@@ -5,16 +5,16 @@ and based on [photo-stream].
 
 ### Setup
 
-First make sure to Deno is installed:
+First, make sure Deno is installed:
 https://deno.land/manual/getting_started/installation
 
-Before running the project, you'll need to create a `.env` file in the root
-directory. This file should contain the configuration for the project. The
-default options are set in `.env.defaults` and you should check that file to see
-all available configuration options.
+Before running the project, you must create a `.env` file in the root directory.
+This file should contain the configuration for the project. The default options
+are set in `.env.defaults`; you should check that file to see all available
+configuration options.
 
 ```ini
-TITLE=My photo stream
+TITLE=My photostream
 DESCRIPTION=A collection of my photos
 # ...
 
@@ -27,7 +27,7 @@ USER_ID=your-vsco-user-id
 Using a user ID helps to avoid resolving the user ID from the username on each
 request.
 
-To get your numberic VSCO user ID, you can run the following command:
+To get your numeric VSCO user ID, you can run the following command:
 
 ```sh
 deno task get-id your-username
@@ -45,8 +45,9 @@ This will watch the project directory and restart as you make changes.
 
 ### Contributing
 
-river is available under the MIT license. See the [LICENCE] file for more info.
-Pull requests are welcome! If you have a feature request, please open an issue.
+river is available under the MIT license. Please take a look at the [LICENCE]
+file for more info. Pull requests are welcome! If you have a feature request,
+please open an issue.
 
 For some ideas on what to work on, check out the [TODO] file.
 
