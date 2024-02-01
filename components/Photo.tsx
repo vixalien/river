@@ -23,7 +23,23 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
   // check slug
   const slug = image._id;
   const id = `id-${slug}`;
-  const imageUrl = imageLink(image, 480);
+  const imageUrl = imageLink(image, 300);
+
+  let srcSet, sizes;
+
+  // if (matches) {
+  //   srcSet = `${imageUrl} 300w, ${imageLink(image, 600)} 600w, ${
+  //     imageLink(image, 800)
+  //   } 800w, ${imageLink(image, 800)} 1000w`;
+  //   sizes = `100vw`;
+  // } else {
+  srcSet = `${imageUrl} 300w, ${imageLink(image, 600)} 600w, ${
+    imageLink(image, 800)
+  } 800w`;
+  sizes =
+    `(min-width: 300px) 100vw, (min-width: 440px) 50vw, (min-width: 640px) 33vw, 25vw`;
+  // }
+
   const capture_date = new Date(image.capture_date_ms);
 
   const tint = colorHash.hex(slug);
@@ -40,6 +56,8 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
     >
       <img
         loading="lazy"
+        srcSet={srcSet}
+        sizes={sizes}
         src={imageUrl}
         width={image.width}
         height={image.height}
