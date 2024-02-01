@@ -9,7 +9,8 @@
     "preview": "deno run -A main.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "get-id": "deno run -A util/get-id.ts",
-    "demo": "deno run -A demo/start.ts"
+    "demo": "deno run -A demo/start.ts",
+    "clear-cache": "rm cache/media.json 2> /dev/null"
   },
   "lint": { "rules": { "tags": ["fresh", "recommended"] } },
   "exclude": ["**/_fresh/*"],

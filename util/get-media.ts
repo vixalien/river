@@ -32,9 +32,11 @@ export async function getAllMedia() {
     cursor = next_cursor;
   } while (cursor);
 
-  // TODO: allow writing to cache
-  // TODO2: allow using cache in production
-  // Deno.writeTextFileSync("./media.json", JSON.stringify(media, null, 2));
+  // TODO: allow using cache in production
+
+  if (__env.NODE_ENV === "development") {
+    await Deno.writeTextFile(CACHE_FILE, JSON.stringify(media, null, 2));
+  }
 
   return media;
 }
