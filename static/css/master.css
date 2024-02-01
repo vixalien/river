@@ -9,10 +9,12 @@ from https://github.com/waschinski/photo-stream/blob/master/css/master.scss
   font-size: 1em;
   box-sizing: border-box;
 }
+
 body,
 html {
   min-height: 100%;
 }
+
 body {
   font: 16px/24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -20,21 +22,25 @@ body {
   background: #fff;
   color: #2e2f30;
 }
+
 @media (prefers-color-scheme: dark) {
   body {
     background: #000;
     color: #eee;
   }
 }
+
 main {
   display: flex;
 }
+
 .grid {
   display: flex;
   flex-wrap: wrap;
   position: relative;
   align-content: flex-start;
 }
+
 .grid:after {
   content: "";
   display: block;
@@ -42,14 +48,17 @@ main {
   outline: 2px solid #fff;
   position: relative;
 }
+
 @media (prefers-color-scheme: dark) {
   .grid:after {
     outline-color: #000;
   }
 }
+
 .grid .photodetail-links {
   display: none;
 }
+
 .grid .item {
   height: 40vh;
   flex-grow: 1;
@@ -57,19 +66,23 @@ main {
   position: relative;
   background-size: 100%;
 }
+
 @media (prefers-color-scheme: dark) {
   .grid .item {
     outline-color: #000;
   }
 }
+
 .grid .item:focus .meta .gridview-button,
 .grid .item:hover .meta .gridview-button {
   visibility: visible;
 }
+
 .grid .item:focus .open,
 .grid .item:hover .open {
   background-color: rgba(0, 0, 0, 0.25);
 }
+
 .grid .item img {
   max-height: 100%;
   min-width: 100%;
@@ -78,6 +91,7 @@ main {
   object-fit: cover;
   display: block;
 }
+
 .grid .item .open,
 .grid .item .close {
   position: absolute;
@@ -89,25 +103,31 @@ main {
   overflow: hidden;
   white-space: nowrap;
 }
+
 .grid .item .open {
   cursor: zoom-in;
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.15s ease-out;
 }
+
 .grid .item .open:hover,
 .grid .item .open:focus {
   background-color: rgba(0, 0, 0, 0.25);
 }
+
 .grid .item .open:active {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .grid .item .close {
   display: none;
   cursor: zoom-out;
 }
+
 .grid .item .full {
   display: none;
 }
+
 .grid .item .previous,
 .grid .item .next {
   position: absolute;
@@ -120,6 +140,7 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .grid .item .previous span,
 .grid .item .next span {
   display: block;
@@ -140,31 +161,38 @@ main {
   background-image: url(../img/icon-left.svg);
   pointer-events: none;
 }
+
 .grid .item .previous span:hover,
 .grid .item .next span:hover {
   background-color: rgba(200, 200, 200, 0.5);
 }
+
 .grid .item .previous span:active,
 .grid .item .next span:active {
   background-color: rgba(200, 200, 200, 0.25);
 }
+
 .grid .item .previous:hover span,
 .grid .item .previous:focus span,
 .grid .item .next:hover span,
 .grid .item .next:focus span {
   background-color: rgba(200, 200, 200, 0.5);
 }
+
 .grid .item .previous:active span,
 .grid .item .next:active span {
   background-color: rgba(200, 200, 200, 0.25);
 }
+
 .grid .item .next {
   right: 0;
   left: auto;
 }
+
 .grid .item .next span {
   background-image: url(../img/icon-right.svg);
 }
+
 .grid .item .meta {
   display: flex;
   position: absolute;
@@ -174,16 +202,20 @@ main {
   text-shadow: #000 0 1px 1px, #000 0 2px 4px;
   opacity: 0.5;
 }
+
 .grid .item .meta li {
   margin-right: 12px;
 }
+
 .grid .item .meta li .download {
   background-image: url(../img/icon-download.svg);
 }
+
 .grid .item .meta li .share {
   background-image: url(../img/icon-share.svg);
   cursor: pointer;
 }
+
 .grid .item .meta li .gridview-button {
   display: block;
   border-radius: 16px;
@@ -202,24 +234,30 @@ main {
   background-color: rgba(200, 200, 200, 0.25);
   background-color: rgba(200, 200, 200, 0.5);
 }
+
 .grid .item .meta li .gridview-button:hover {
   background-color: rgba(200, 200, 200, 0.5);
 }
+
 .grid .item .meta li .gridview-button:active {
   background-color: rgba(200, 200, 200, 0.25);
 }
+
 @media not all and (hover: none) {
   .grid .item .meta li .gridview-button {
     visibility: hidden;
   }
 }
+
 .grid .item .meta li .gridview-button:focus,
 .grid .item .meta li .gridview-button:hover {
   background-color: rgba(200, 200, 200, 0.75);
 }
+
 .grid .item .meta li .gridview-button:active {
   background-color: rgb(200, 200, 200);
 }
+
 .grid .item.target {
   position: fixed;
   top: 0;
@@ -232,25 +270,52 @@ main {
   display: flex;
   align-items: center;
 }
+
 @media (prefers-color-scheme: dark) {
   .grid .item.target {
     background: #000;
   }
 }
+
 .grid .item.target .photodetail-links {
   display: flex;
   z-index: 21;
+  align-items: stretch;
+  gap: 6px;
 }
+
+.grid .item.target .photodetail-links > li {
+  margin-inline-start: 0;
+}
+
+.caption,
+.date {
+  color: black;
+  background-color: rgba(200, 200, 200, 0.62);
+  backdrop-filter: blur(20px);
+  padding: 0 10px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+}
+
+.caption {
+  font-weight: 500;
+}
+
 .grid .item.target .open {
   display: none;
 }
+
 .grid .item.target .close {
   display: block;
 }
+
 .grid .item.target img {
   object-fit: contain;
   animation: fade-in 0.5s ease-out;
 }
+
 .grid .item.target .full {
   display: flex;
   position: absolute;
@@ -260,30 +325,37 @@ main {
   left: 0;
   animation: fade-in 0.5s ease-out;
 }
+
 .grid .item.target .full span {
   flex-grow: 1;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .grid .item.target .meta {
   display: none !important;
 }
+
 .grid .item.target .photoview-button {
   height: 75px;
 }
+
 .grid .item.target .photoview-button span:focus,
 .grid .item.target .photoview-button span:hover {
   background-color: rgba(200, 200, 200, 0.5);
 }
+
 .grid .item.target .photoview-button span:active {
   background-color: rgba(200, 200, 200, 0.75);
 }
+
 .grid .item.target .previous,
 .grid .item.target .next,
 .grid .item.target .download {
   display: flex;
 }
+
 .links {
   position: fixed;
   right: 24px;
@@ -291,15 +363,19 @@ main {
   flex-wrap: wrap;
   margin-left: 16px;
 }
+
 .links.bottom {
   bottom: 24px;
 }
+
 .links.top {
   top: 14px;
 }
+
 .links li {
   margin-left: 8px;
 }
+
 .links li a {
   display: block;
   border-radius: 16px;
@@ -315,36 +391,46 @@ main {
   -webkit-backdrop-filter: blur(20px);
   -moz-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
-  background-color: rgba(200, 200, 200, 0.25);
+  background-color: rgba(200, 200, 200, 0.62);
 }
+
 .links li a:hover {
-  background-color: rgba(200, 200, 200, 0.5);
-}
-.links li a:active {
   background-color: rgba(200, 200, 200, 0.25);
 }
+
+.links li a:active {
+  background-color: rgba(200, 200, 200, 0.50);
+}
+
 .links li.github a {
   background-image: url(../img/icon-github.svg);
 }
+
 .links li.twitter a {
   background-image: url(../img/icon-twitter.svg);
 }
+
 .links li.instagram a {
   background-image: url(../img/icon-instagram.svg);
 }
+
 .links li.rss a {
   background-image: url(../img/icon-rss.svg);
 }
+
 .links li.sort a {
   background-image: url(../img/icon-sort.svg);
 }
+
 .links li.share a {
   cursor: pointer;
   background-image: url(../img/icon-share.svg);
 }
+
 .links li.download a {
   background-image: url(../img/icon-download.svg);
 }
+
 .links li.link a {
   text-indent: 0;
   width: auto;
@@ -356,6 +442,7 @@ main {
   font-weight: 600;
   text-decoration: none;
 }
+
 .four-oh-four {
   flex-grow: 1;
   display: flex;
@@ -366,19 +453,23 @@ main {
   justify-content: center;
   text-align: center;
 }
+
 .four-oh-four img {
   width: 64px;
   vertical-align: bottom;
   margin-bottom: 24px;
 }
+
 .four-oh-four h1 {
   font-size: 32px;
   line-height: 48px;
   font-weight: 700;
 }
+
 .four-oh-four p {
   margin-bottom: 32px;
 }
+
 .four-oh-four a {
   display: block;
   border-radius: 16px;
@@ -405,26 +496,32 @@ main {
   font-weight: 600;
   text-decoration: none;
 }
+
 .four-oh-four a:hover {
   background-color: rgba(200, 200, 200, 0.5);
 }
+
 .four-oh-four a:active {
   background-color: rgba(200, 200, 200, 0.25);
 }
+
 @media (max-aspect-ratio: 1/1) {
   .grid .item {
     height: 30vh;
   }
 }
+
 @media (max-height: 480px) {
   .grid .item {
     height: 80vh;
   }
 }
+
 @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
   .grid {
     flex-direction: row;
   }
+
   /* .grid .item {
     height: auto;
     width: 100%;
@@ -433,29 +530,36 @@ main {
     width: 100%;
     height: auto;
   }
+
   .grid .item .previous,
   .grid .item .next {
     width: 25vw;
     max-width: auto;
   }
+
   .grid .item .previous span,
   .grid .item .next span {
     display: none;
   }
+
   .grid .item .previous {
     cursor: w-resize;
   }
+
   .grid .item .next {
     cursor: e-resize;
   }
+
   .grid .item .meta li .gridview-button {
     visibility: visible;
   }
 }
+
 @keyframes fade-in {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }

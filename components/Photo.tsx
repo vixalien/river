@@ -84,18 +84,20 @@ export default function Photo({ matches, image, previous, next }: ImageProps) {
         label="Next"
       />
       <ul className="links top photodetail-links">
-        {
-          /* <li className="caption">
-          <span className="caption-text">{image.description}</span>
-        </li>
+        {image.description
+          ? (
+            <li className="caption">
+              <span className="caption-text">{image.description}</span>
+            </li>
+          )
+          : null}
         <li className="date">
           <code>
             <time dateTime={capture_date.toISOString()}>
               {capture_date.toLocaleDateString("en-IE")}
             </time>
           </code>
-        </li> */
-        }
+        </li>
         {env.ALLOW_IMAGE_SHARING == "1" && (
           <ShareButton
             text={image.description}
