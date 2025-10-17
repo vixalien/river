@@ -23,7 +23,7 @@ export async function request<T = unknown>(
   const response = await fetch(url, {
     method: meta.method || "GET",
     headers: {
-      "Authorization": `Bearer ${__settings.token}`,
+      Authorization: `Bearer ${__settings.token}`,
     },
   });
 

@@ -7,7 +7,7 @@ setToken(__env.API_TOKEN);
 const CACHE_FILE = join(Deno.cwd(), "cache", "media.json");
 
 export async function getAllMedia() {
-  if (__env.NODE_ENV === "development" && await cacheExists()) {
+  if (__env.NODE_ENV === "development" && (await cacheExists())) {
     const json = await Deno.readTextFile(CACHE_FILE);
 
     return JSON.parse(json) as ImageMedium[];
@@ -24,7 +24,7 @@ export async function getAllMedia() {
 
   do {
     const { media: profileMedia, next_cursor } = await getProfileMedia(id, {
-      limit: 30,
+      limit: 20,
       cursor,
     });
 
@@ -35,7 +35,10 @@ export async function getAllMedia() {
   // TODO: allow using cache in production
 
   if (__env.NODE_ENV === "development") {
-    await Deno.writeTextFile(CACHE_FILE, JSON.stringify(media, null, 2));
+    await Deno.mkdir(join(Deno.cwd(), "cache"), { recursive: true });
+    await Deno.writeTextFile(CACHE_FILE, JSON.stringify(media, null, 2), {
+      create: true,
+    });
   }
 
   return media;
